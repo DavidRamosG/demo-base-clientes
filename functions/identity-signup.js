@@ -5,19 +5,19 @@ exports.handler = async (event) => {
   const { user } = JSON.parse(event.body);
 
   // create a new customer in Stripe
-  const customer = await stripe.customers.create({ name: user.email, email: user.email, });
+  const customer = await stripe.customers.create({ name: user.name, email: user.email, });
 
   // subscribe the new customer to the free plan
   await stripe.subscriptions.create({
     customer: customer.id,
     items: [
       {
-        price: 'price_1Of4XMGAVjNy5dcWCZzjmww7',
+        price: process.env.STRIPE_DEFAULT_PRICE_PLAN,
       },
     ],
   });
 
-/*price_1Of4XMGAVjNy5dcWCZzjmww7  items: [{ price: process.env.STRIPE_DEFAULT_PRICE_PLAN }],
+
   // store the Netlify and Stripe IDs in Fauna
   await faunaFetch({
     query: `
@@ -33,7 +33,7 @@ exports.handler = async (event) => {
       stripeID: customer.id,
     },
   });
-*/
+
   return {
     statusCode: 200,
     body: JSON.stringify({
