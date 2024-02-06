@@ -3,7 +3,6 @@ const { faunaFetch } = require('./utils/fauna');
 
 exports.handler = async (event) => {
   const { user } = JSON.parse(event.body);
-  alert(user)
 
   // create a new customer in Stripe
   const customer = await stripe.customers.create({ name: user.email, email: user.email, });
