@@ -1,7 +1,7 @@
 const content = {
   free: {
     src:
-      'https://images.unsplash.com/photo-1550159930-40066082a4fc?auto=format&fit=crop&w=600&h=600&q=80',
+      '/images/thesubs_logo.png',
     alt: 'corgi in the park with a sunset in the background',
     credit: 'Jacob Van Blarcom',
     creditLink: 'https://unsplash.com/photos/lkzjENdWgd8',
@@ -41,7 +41,7 @@ exports.handler = async (event, context) => {
       statusCode: 402,
       body: JSON.stringify({
         src:
-          'https://res.cloudinary.com/jlengstorf/image/upload/q_auto,f_auto/v1592618179/stripe-subscription/subscription-required.jpg',
+          '/images/the_subs_required.png',
         alt: 'corgi in a crossed circle with the text “subscription required”',
         credit: 'Jason Lengstorf',
         creditLink: 'https://dribbble.com/jlengstorf',
